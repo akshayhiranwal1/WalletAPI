@@ -1,4 +1,5 @@
 ﻿using AutoMapper.Configuration;
+using WalletAPI.Database;
 using WalletAPI.ViewModels;
 
 namespace WalletAPI.Mappings
@@ -14,15 +15,10 @@ namespace WalletAPI.Mappings
         /// </summary>
         public MapsProfile()
         {
-            // DeviceViewModel To Device and its reverse from Device To DeviceViewModel
-            //CreateMap<DeviceViewModel, Device>()
-            //    .ForMember(dest => dest.DeviceTitle, opt => opt.MapFrom(src => src.Title))
-            //    .ForMember(dest => dest.DeviceId, opt => opt.MapFrom(src => Guid.NewGuid()))
-            //    .ForMember(x => x.DeviceDetails, opt => opt.Ignore()).ReverseMap();
-
-
-            // DeviceViewModel To Device and its reverse from Device To DeviceViewModel
-            //CreateMap<ComplianceDetailViewModel, ComplianceDetail>().ReverseMap();
+            CreateMap<AccountViewModel,Account>().ReverseMap();
+            CreateMap <PaymentMasterViewModel, PaymentMaster>().ReverseMap();
+            CreateMap <TransactionLogMasterViewModel, TransactionLogMaster>().ReverseMap();
+            CreateMap <WalletViewModel, Wallet>().ReverseMap();
         }
     }
 }

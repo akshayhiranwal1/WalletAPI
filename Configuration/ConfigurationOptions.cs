@@ -18,7 +18,6 @@ namespace WalletAPI.Configuration
         public static void ConfigureService(IServiceCollection services, IConfigurationRoot configuration)
         {
             services.Configure<ConnectionSettings>(configuration.GetSection(Constants.ConnectionStrings));
-            services.Configure<APIs>(configuration.GetSection(Constants.Services));
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using WalletAPI.ActionFilters;
-using WalletAPI.Services.Generic;
+﻿using WalletAPI.Services.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using WalletAPI.Common;
 using System.Linq;
 
 namespace WalletAPI.Controllers
@@ -15,8 +13,6 @@ namespace WalletAPI.Controllers
     /// <typeparam name="TViewModel">Type of the view model</typeparam>
     //[Route("api/v{version:apiVersion}/[controller]")]
     [Route("api/[controller]")]
-    [Authorize]
-    [AuthTokenForReq]
     public class BaseController<TViewModel> : Controller where TViewModel : class
     {
         private IGenericService<TViewModel> GenericService { get; set; }
@@ -34,7 +30,6 @@ namespace WalletAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetAll")]
-        [ValidateActionParameters]
         public async Task<IActionResult> GetAll()
         {
             return new OkObjectResult(await GenericService.GetAll());
@@ -45,26 +40,9 @@ namespace WalletAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetByAny/{value}")]
-        [ValidateActionParameters]
         public async Task<IActionResult> GetByAny([FromRoute][Required]int value)
         {
             return new OkObjectResult(await GenericService.GetByAny(value));
-        }
-
-        /// <summary>
-        /// Gets all the entities
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("GetAllWithData")]
-        [ValidateActionParameters]
-        public async Task<IActionResult> GetAllWithData(int? id)
-        {
-            if (id == null)
-            {
-                var LoggedInUserId = User.Claims.Where(x => x.Type == ClaimsConstants.fkEmpId).FirstOrDefault().Value;
-                id = int.Parse(LoggedInUserId);
-            }
-            return new OkObjectResult(await GenericService.GetAllWithData(id.Value));
         }
 
         /// <summary>
@@ -74,7 +52,6 @@ namespace WalletAPI.Controllers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [HttpGet("GetPaged")]
-        [ValidateActionParameters]
         public async Task<IActionResult> Get([FromQuery, Required]int page, [FromQuery, Required]int pageSize)
         {
             return new OkObjectResult(await GenericService.GetAll(page, pageSize));
@@ -86,7 +63,6 @@ namespace WalletAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [ValidateActionParameters]
         public async Task<IActionResult> GetById([FromRoute][Required]int id)
         {
             return new ObjectResult(await GenericService.GetById(id));
@@ -98,7 +74,6 @@ namespace WalletAPI.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateActionParameters]
         public IActionResult Post([FromBody]TViewModel model)
         {
             var entity = GenericService.Create(model);
@@ -112,7 +87,6 @@ namespace WalletAPI.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [ValidateActionParameters]
         public IActionResult Put([FromRoute]int id, [FromBody]TViewModel model)
         {
             GenericService.Update(id, model);
@@ -125,7 +99,6 @@ namespace WalletAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [ValidateActionParameters]
         public IActionResult Delete([FromRoute]int id)
         {
             GenericService.Delete(id);

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WalletAPI.ActionFilters;
 using WalletAPI.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,18 +41,6 @@ namespace WalletAPI
         {
             ConfigurationOptions.ConfigureService(services, Configuration);
 
-            // Add framework services.
-            services.AddMvc(
-                options =>
-                {
-                    options.Filters.Add(typeof(ValidateModelStateAttribute));
-                });
-
-            services.AddJwtAuthentication();
-
-            // Remove commented code and above semicolon 
-            // if the assembly of the API Controllers is different than project which contains Startup class 
-            //.AddApplicationPart(typeof(BaseController<>).Assembly);
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -65,21 +52,15 @@ namespace WalletAPI
                     .AllowCredentials());
             });
             
-            //Mapper.Reset();
-            // https://github.com/AutoMapper/AutoMapper.Extensions.Microsoft.DependencyInjection/issues/28
+            
             services.AddAutoMapper(typeof(Startup));
             services.AddCors();
-            //services.AddCors(x => { x.AddPolicy("AllowMyOrigin", y => y.WithOrigins("http://localhost:4200")); });
-            // Swagger API documentation
             SwaggerConfiguration.ConfigureService(services);
 
             // IOC containers / Entity Framework
             EntityFrameworkConfiguration.ConfigureService(services, Configuration);
             IocContainerConfiguration.ConfigureService(services, Configuration);
             ApiVersioningConfiguration.ConfigureService(services);
-
-            //VERY IMPORTANT TO WORK WITH SELF REFFERENCING ENTITIES
-            //services.AddMvc(options => { }).AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
         }
 

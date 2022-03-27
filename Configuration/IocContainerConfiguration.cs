@@ -1,5 +1,4 @@
-﻿using WalletAPI.Common.HttpRequestClient;
-using WalletAPI.Data.Management;
+﻿using WalletAPI.Data.Management;
 using WalletAPI.Repository;
 using WalletAPI.Services;
 using WalletAPI.Services.Generic;
@@ -26,19 +25,17 @@ namespace WalletAPI.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddScoped<IDeviceViewModelValidationRules, DeviceViewModelValidationRules>();
-            //services.AddTransient<IDeviceValidationService, DeviceValidationService>();
-            services.AddTransient<IDataBaseManager, DataBaseManager>();
             services.AddTransient<IContextFactory, ContextFactory>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             
 
-            //services.AddScoped(typeof(IGenericService<WorkFlowMasterViewModel>), typeof(WorkFlowMasterService<WorkFlowMasterViewModel>));
-            //API Calling
-            services.AddTransient<IRequestClient, RequestClient>();
+            services.AddScoped(typeof(IGenericService<AccountViewModel>), typeof(AccountService<AccountViewModel>));
+            services.AddScoped(typeof(IGenericService<PaymentMasterViewModel>), typeof(PaymentMasterService<PaymentMasterViewModel>));
+            services.AddScoped(typeof(IGenericService<TransactionLogMasterViewModel>), typeof(TransactionLogMasterService<TransactionLogMasterViewModel>));
+            services.AddScoped(typeof(IGenericService<WalletViewModel>), typeof(WalletService<WalletViewModel>));
 
-            
+
         }
     }
 }

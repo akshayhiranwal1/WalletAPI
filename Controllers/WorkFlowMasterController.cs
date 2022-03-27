@@ -3,21 +3,14 @@ using WalletAPI.ViewModels;
 
 namespace WalletAPI.Controllers
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class WorkFlowMasterController
-        //: BaseController<WorkFlowMasterViewModel>
+    public class AccountController
+        : BaseController<AccountViewModel>
     {
-        //private readonly IGenericService<WorkFlowMasterViewModel> Service;
+        private readonly IGenericService<AccountViewModel> Service;
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="WorkFlowMasterController"/> class.
-        ///// </summary>
-        ///// <param name="service">The device service.</param>
-        //public WorkFlowMasterController(IGenericService<WorkFlowMasterViewModel> service) : base(service)
-        //{
-        //    Service = service;
-        //}
+        public AccountController(IGenericService<AccountViewModel> service) : base(service)
+        {
+            Service = service;
+        }
     }
 }

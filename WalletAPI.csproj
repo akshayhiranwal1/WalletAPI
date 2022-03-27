@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>CustomerVehicleAPI</AssemblyName>
-    <RootNamespace>CustomerVehicleAPI</RootNamespace>
+    <AssemblyName>WalletAPI</AssemblyName>
+    <RootNamespace>WalletAPI</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<LangVersion>8.0</LangVersion>
   </PropertyGroup>
@@ -16,22 +16,22 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'WalletAPI' " />
   <ItemGroup>
-    <Compile Remove="Model\**" />
+    <Compile Remove="Data\Views\**" />
     <Compile Remove="SimpleTokenProvider\**" />
     <Compile Remove="Utilities\**" />
     <Compile Remove="Validation\**" />
     <Compile Remove="wwwroot\**" />
-    <Content Remove="Model\**" />
+    <Content Remove="Data\Views\**" />
     <Content Remove="SimpleTokenProvider\**" />
     <Content Remove="Utilities\**" />
     <Content Remove="Validation\**" />
     <Content Remove="wwwroot\**" />
-    <EmbeddedResource Remove="Model\**" />
+    <EmbeddedResource Remove="Data\Views\**" />
     <EmbeddedResource Remove="SimpleTokenProvider\**" />
     <EmbeddedResource Remove="Utilities\**" />
     <EmbeddedResource Remove="Validation\**" />
     <EmbeddedResource Remove="wwwroot\**" />
-    <None Remove="Model\**" />
+    <None Remove="Data\Views\**" />
     <None Remove="SimpleTokenProvider\**" />
     <None Remove="Utilities\**" />
     <None Remove="Validation\**" />
@@ -42,22 +42,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Common\TokenType.cs" />
     <Compile Remove="Controllers\DevicesController.cs" />
     <Compile Remove="Data\Entities\Email.cs" />
     <Compile Remove="Services\Implementation\DeviceService.cs" />
     <Compile Remove="Services\Interfaces\IDeviceService.cs" />
     <Compile Remove="Services\Interfaces\IDeviceValidationService.cs" />
-    <Compile Remove="Services\Validations\DeviceValidationService.cs" />
     <Compile Remove="ViewModels\DeviceDetailsModel.cs" />
     <Compile Remove="ViewModels\Devices.cs" />
     <Compile Remove="ViewModels\DeviceViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Validations\" />
-    <Folder Include="Data\Entities\" />
-    <Folder Include="Data\Views\" />
+    <Folder Include="ActionFilters\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />

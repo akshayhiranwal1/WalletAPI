@@ -13340,19 +13340,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\devteam\\.nuget\\packages\\": {}
+    "C:\\Users\\akshay.hiranwal\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Akshay\\WalletAPI\\WalletAPI.csproj",
-      "projectName": "CustomerVehicleAPI",
-      "projectPath": "C:\\Akshay\\WalletAPI\\WalletAPI.csproj",
-      "packagesPath": "C:\\Users\\devteam\\.nuget\\packages\\",
-      "outputPath": "C:\\Akshay\\WalletAPI\\obj\\",
+      "projectUniqueName": "D:\\Akshay\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
+      "projectName": "WalletAPI",
+      "projectPath": "D:\\Akshay\\WalletAPI\\WalletAPI\\WalletAPI.csproj",
+      "packagesPath": "C:\\Users\\akshay.hiranwal\\.nuget\\packages\\",
+      "outputPath": "D:\\Akshay\\WalletAPI\\WalletAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\devteam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\akshay.hiranwal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13533,7 +13537,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

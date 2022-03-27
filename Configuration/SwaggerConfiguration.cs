@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using WalletAPI.ActionFilters;
 using WalletAPI.Controllers;
 using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
@@ -26,7 +25,7 @@ namespace WalletAPI.Configuration
             services.AddSwaggerGen(c =>
             {
                 // TODO: Need to push hardcoded strings to resource file
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API for TCLC System | Customer Vehicle Business API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Wallet API", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -47,19 +46,6 @@ namespace WalletAPI.Configuration
                             new string[] { }
                      }
                 });
-
-                //c.AddSecurityDefinition("uid", new ApiKeyScheme()
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                //    Name = "Authorization",
-                //    In = "header",
-                //    Type = "apiKey"
-                //});
-                //c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
-                //{
-                //    { "uid  ", new string[] { } }
-                //});
-                c.OperationFilter<TenantHeaderOperationFilter>();
                 var xmlFile = $"{typeof(BaseController<>).Assembly.GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -82,8 +68,8 @@ namespace WalletAPI.Configuration
             app.UseSwaggerUI(c =>
             {
               //  c.SwaggerGeneratorOptions.IgnoreObsoleteActions = true;
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TCLC Api Generic | Customer Vehicle Business API v1.0");
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TCLC Api v1.1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Wallet API v1.0");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Wallet API v1.1");
             });
         }
     }

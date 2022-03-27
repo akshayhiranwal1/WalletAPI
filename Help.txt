@@ -1,5 +1,5 @@
 ﻿Update Entities:
-dotnet ef dbcontext scaffold "user id=tclc.admin;Password=Windows@1;Initial Catalog=devCustomerVehicleBusiness;Data Source=tclc-tae.database.windows.net;" Microsoft.EntityFrameworkCore.SqlServer -o Model
+dotnet ef dbcontext scaffold "Initial Catalog=wallet;Data Source=JKTNOLAP636\SQLEXPRESS; persist security info=True;Integrated Security=SSPI;" Microsoft.EntityFrameworkCore.SqlServer -o Model
 
 //Entity Mapping
 ViewModel (Entity Mapping)
