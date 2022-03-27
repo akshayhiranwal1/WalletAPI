@@ -13340,24 +13340,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/akshayhiranwal/.nuget/packages/": {}
+    "C:\\Users\\devteam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/akshayhiranwal/Akshay/Personal/CustomerVehicleAPI/branches/DEV/CustomerVehicleAPI/WalletAPI.csproj",
+      "projectUniqueName": "C:\\Akshay\\WalletAPI\\WalletAPI.csproj",
       "projectName": "CustomerVehicleAPI",
-      "projectPath": "/Users/akshayhiranwal/Akshay/Personal/CustomerVehicleAPI/branches/DEV/CustomerVehicleAPI/WalletAPI.csproj",
-      "packagesPath": "/Users/akshayhiranwal/.nuget/packages/",
-      "outputPath": "/Users/akshayhiranwal/Akshay/Personal/CustomerVehicleAPI/branches/DEV/CustomerVehicleAPI/obj/",
+      "projectPath": "C:\\Akshay\\WalletAPI\\WalletAPI.csproj",
+      "packagesPath": "C:\\Users\\devteam\\.nuget\\packages\\",
+      "outputPath": "C:\\Akshay\\WalletAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/akshayhiranwal/.config/NuGet/NuGet.Config"
+        "C:\\Users\\devteam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13531,7 +13533,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }

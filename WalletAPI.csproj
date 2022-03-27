@@ -18,15 +18,23 @@
   <ItemGroup>
     <Compile Remove="Model\**" />
     <Compile Remove="SimpleTokenProvider\**" />
+    <Compile Remove="Utilities\**" />
+    <Compile Remove="Validation\**" />
     <Compile Remove="wwwroot\**" />
     <Content Remove="Model\**" />
     <Content Remove="SimpleTokenProvider\**" />
+    <Content Remove="Utilities\**" />
+    <Content Remove="Validation\**" />
     <Content Remove="wwwroot\**" />
     <EmbeddedResource Remove="Model\**" />
     <EmbeddedResource Remove="SimpleTokenProvider\**" />
+    <EmbeddedResource Remove="Utilities\**" />
+    <EmbeddedResource Remove="Validation\**" />
     <EmbeddedResource Remove="wwwroot\**" />
     <None Remove="Model\**" />
     <None Remove="SimpleTokenProvider\**" />
+    <None Remove="Utilities\**" />
+    <None Remove="Validation\**" />
     <None Remove="wwwroot\**" />
     <None Remove="Data\Entities\" />
     <None Remove="Data\Views\" />
@@ -41,10 +49,6 @@
     <Compile Remove="Services\Interfaces\IDeviceService.cs" />
     <Compile Remove="Services\Interfaces\IDeviceValidationService.cs" />
     <Compile Remove="Services\Validations\DeviceValidationService.cs" />
-    <Compile Remove="Utilities\ILoginUtility.cs" />
-    <Compile Remove="Utilities\LoginUtility.cs" />
-    <Compile Remove="Validation\DeviceViewModelValidationRules.cs" />
-    <Compile Remove="Validation\IDeviceViewModelValidationRules.cs" />
     <Compile Remove="ViewModels\DeviceDetailsModel.cs" />
     <Compile Remove="ViewModels\Devices.cs" />
     <Compile Remove="ViewModels\DeviceViewModel.cs" />
@@ -52,10 +56,8 @@
 
   <ItemGroup>
     <Folder Include="Services\Validations\" />
-    <Folder Include="Validation\" />
     <Folder Include="Data\Entities\" />
     <Folder Include="Data\Views\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />

@@ -47,65 +47,27 @@ namespace WalletAPI.Data.Management
         }
 
         /// <inheritdoc />
-        public IDbContext DbContext => new DeviceContext(ChangeDatabaseNameInConnectionString(TenantId).Options);
+        public IDbContext DbContext => new DeviceContext(connectionOptions.Value.DefaultConnection);
 
-        /// <summary>
-        /// Gets tenant id from HTTP header
-        /// </summary>
-        /// <value>
-        /// The tenant identifier.
-        /// </value>
-        /// <exception cref="ArgumentNullException">
-        /// httpContext
-        /// or
-        /// tenantId
-        /// </exception>
-        private int TenantId
+        private DbContextOptionsBuilder<DeviceContext> ChangeDatabaseNameInConnectionString()
         {
-            get
-            {
-                ValidateHttpContext();
-                int tenantId = 6;
-                //int.Parse(httpContext.Request.Headers[TenantIdFieldName]);
-                return tenantId;
-            }
-        }
+            //ValidateDefaultConnection();
 
-        private DbContextOptionsBuilder<DeviceContext> ChangeDatabaseNameInConnectionString(int tenantId)
-        {
-            ValidateDefaultConnection();
+            //// 1. Create Connection String Builder using Default connection string
+            //var connectionBuilder = databaseType.GetConnectionBuilder(connectionOptions.Value.DefaultConnection);
 
-            // 1. Create Connection String Builder using Default connection string
-            var connectionBuilder = databaseType.GetConnectionBuilder(connectionOptions.Value.DefaultConnection);
+            //// 2. Remove old Database Name from connection string
+            //connectionBuilder.Remove(DatabaseFieldKeyword);
 
-            // 2. Remove old Database Name from connection string
-            connectionBuilder.Remove(DatabaseFieldKeyword);
-
-            // 3. Obtain Database name from DataBaseManager and Add new DB name to 
-            connectionBuilder.Add(DatabaseFieldKeyword, dataBaseManager.GetDataBaseName(connectionOptions.Value.MasterDbConnection, tenantId));
+            //// 3. Obtain Database name from DataBaseManager and Add new DB name to 
+            //connectionBuilder.Add(DatabaseFieldKeyword, dataBaseManager.GetDataBaseName(connectionOptions.Value.MasterDbConnection, tenantId));
 
             // 4. Create DbContextOptionsBuilder with new Database name
             var contextOptionsBuilder = new DbContextOptionsBuilder<DeviceContext>();
             
-            databaseType.SetConnectionString(contextOptionsBuilder, connectionBuilder.ConnectionString);
+            databaseType.SetConnectionString(contextOptionsBuilder, connectionOptions.Value.DefaultConnection);
 
             return contextOptionsBuilder;
-        }
-
-        private void ValidateDefaultConnection()
-        {
-            if (string.IsNullOrEmpty(connectionOptions.Value.DefaultConnection))
-            {
-                throw new ArgumentNullException(nameof(connectionOptions.Value.DefaultConnection));
-            }
-        }
-
-        private void ValidateHttpContext()
-        {
-            if (httpContext == null)
-            {
-                throw new ArgumentNullException(nameof(httpContext));
-            }
         }
     }
 }
